@@ -1,0 +1,18 @@
+.todos {
+  width: 100%;
+}
+
+button {
+  width: 200px;
+
+  border: 1px solid #0c2117;
+  border-radius: 6px;
+  background-color: #e4f6ee;
+  margin: 10px;
+}
+
+.name {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
