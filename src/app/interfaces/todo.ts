@@ -4,3 +4,15 @@ export interface Todo {
   category: string;
   isChecked: boolean;
 }
+
+export interface TodosResult {
+  count: number;
+  data: Todo[],
+  success: boolean;
+}
+
+export interface TodoResult {
+  count: number;
+  data: Todo,
+  success: boolean;
+}

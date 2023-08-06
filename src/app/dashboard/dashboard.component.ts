@@ -18,6 +18,6 @@ export class DashboardComponent implements OnInit {
 
   getTodos(): void {
     this.todoService.getTodos()
-      .subscribe(todos => this.todos = todos.slice(1, 5));
+      .subscribe(todos => this.todos = todos.data);
   }
 }

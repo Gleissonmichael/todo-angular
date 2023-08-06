@@ -14,7 +14,7 @@ export class TodosComponent {
   todos: Todo[] = [];
 
   getTodos(): void {
-    this.todoService.getTodos().subscribe((todos) => (this.todos = todos));
+    this.todoService.getTodos().subscribe((todos) => (this.todos = todos.data));
   }
 
   ngOnInit() {
@@ -26,7 +26,7 @@ export class TodosComponent {
     if (!name) { return; }
     this.todoService.addTodo({ name } as Todo)
       .subscribe(todo => {
-        this.todos.push(todo);
+        this.todos.push(todo.data);
       });
   }
 

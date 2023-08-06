@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Todo } from './interfaces/todo';
+import { Todo, TodoResult, TodosResult } from './interfaces/todo';
 import { MessageService } from './message.service';
 import { TODOS } from './mock-todos';
 import { Observable, of } from 'rxjs';
@@ -25,42 +25,48 @@ export class TodoService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  getTodos(): Observable<Todo[]> {
+  getTodos(): Observable<TodosResult> {
     this.messageService.add('Lista atualizada!');
-    return this.http.get<Todo[]>(this.todoUrl).pipe(
-      tap((_) => this.log('fetched todos')),
-      catchError(this.handleError<Todo[]>('getTodos', []))
+    return this.http.get<TodosResult>(this.todoUrl).pipe(
+      tap((_) => this.log('TODOS atualizados')),
+      catchError(this.handleError<TodosResult>('getTodos'))
     );
   }
 
-  getTodo(id: number): Observable<Todo> {
+  getTodo(id: number): Observable<TodoResult> {
     const url = `${this.todoUrl}/${id}`;
-    return this.http.get<Todo>(url).pipe(
-      tap((_) => this.log(`fetched todo id=${id}`)),
-      catchError(this.handleError<Todo>(`getTodo id=${id}`))
+    return this.http.get<TodoResult>(url).pipe(
+      tap((_) => this.log(`TODO ${id} carregado`)),
+      catchError(this.handleError<TodoResult>(`getTodo id=${id}`))
     );
   }
 
   updateTodo(todo: Todo): Observable<any> {
-    return this.http.put(this.todoUrl, todo, this.httpOptions).pipe(
+    const url = `${this.todoUrl}/${todo.id}`;
+    console.log(todo);
+    return this.http.put(url, todo, this.httpOptions).pipe(
       tap((_) => this.log(`updated todo id=${todo.id}`)),
       catchError(this.handleError<any>('updateTodo'))
     );
   }
 
-  addTodo(todo: Todo): Observable<Todo> {
-    return this.http.post<Todo>(this.todoUrl, todo, this.httpOptions).pipe(
-      tap((newTodo: Todo) => this.log(`added todo w/ id=${newTodo.id}`)),
-      catchError(this.handleError<Todo>('addTodo'))
-    );
+  addTodo(todo: Todo): Observable<TodoResult> {
+    return this.http
+      .post<TodoResult>(this.todoUrl, todo, this.httpOptions)
+      .pipe(
+        tap((newTodo: TodoResult) =>
+          this.log(`added todo w/ id=${newTodo.data.id}`)
+        ),
+        catchError(this.handleError<TodoResult>('addTodo'))
+      );
   }
 
-  deleteTodo(id: number): Observable<Todo> {
+  deleteTodo(id: number): Observable<TodoResult> {
     const url = `${this.todoUrl}/${id}`;
 
-    return this.http.delete<Todo>(url, this.httpOptions).pipe(
+    return this.http.delete<TodoResult>(url, this.httpOptions).pipe(
       tap((_) => this.log(`deleted todo id=${id}`)),
-      catchError(this.handleError<Todo>('deleteTodo'))
+      catchError(this.handleError<TodoResult>('deleteTodo'))
     );
   }
 

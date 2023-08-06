@@ -24,7 +24,7 @@ export class TodoDetailComponent {
 
   getTodo(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.todoService.getTodo(id).subscribe((todo) => (this.todo = todo));
+    this.todoService.getTodo(id).subscribe((todo) => (this.todo = todo.data));
   }
 
   save(): void {
