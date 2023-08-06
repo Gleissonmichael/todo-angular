@@ -1,3 +1,4 @@
+<button type="button" (click)="goBack()">go back</button>
 <div *ngIf="todo">
   <h2>{{ todo.name | uppercase }} Details</h2>
   <div>id: {{ todo.id }}</div>
@@ -5,4 +6,5 @@
     <label for="todo-name">Todo name: </label>
     <input id="todo-name" [(ngModel)]="todo.name" placeholder="name" />
   </div>
+  <button type="button" (click)="save()">save</button>
 </div>
