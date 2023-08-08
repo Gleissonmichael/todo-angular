@@ -15,7 +15,7 @@ export class TodoService {
     private messageService: MessageService
   ) {}
 
-  private todoUrl = 'http://localhost:8080/todo';
+  private todoUrl = 'https://todo-api-snowy.vercel.app/todo';
 
   private log(message: string) {
     this.messageService.add(`TodoService: ${message}`);
