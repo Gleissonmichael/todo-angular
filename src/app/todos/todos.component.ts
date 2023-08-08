@@ -9,7 +9,10 @@ import { MessageService } from '../message.service';
   styleUrls: ['./todos.component.css'],
 })
 export class TodosComponent {
-  constructor(private todoService: TodoService, private messageService: MessageService) {}
+  constructor(
+    private todoService: TodoService,
+    private messageService: MessageService
+  ) {}
 
   todos: Todo[] = [];
 
@@ -21,17 +24,20 @@ export class TodosComponent {
     this.getTodos();
   }
 
-  add(name: string): void {
+  add(name: string, category: string): void {
     name = name.trim();
-    if (!name) { return; }
-    this.todoService.addTodo({ name } as Todo)
-      .subscribe(todo => {
-        this.todos.push(todo.data);
-      });
+    if (!name) {
+      return;
+    }
+
+    this.todoService.addTodo({ name, category } as Todo).subscribe((todo) => {
+      console.log(todo)
+      this.todos.push(todo.data);
+    });
   }
 
   delete(todo: Todo): void {
-    this.todos = this.todos.filter(t => t !== todo);
+    this.todos = this.todos.filter((t) => t !== todo);
     this.todoService.deleteTodo(todo.id).subscribe();
   }
 }

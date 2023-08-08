@@ -1,11 +1,17 @@
-<button type="button" (click)="goBack()">Voltar</button>
 <div *ngIf="todo">
   <h2>Detalhes {{ todo.name | uppercase }}</h2>
-  <div>id: {{ todo.id }}</div>
-  <div>
+  <p>id: {{ todo.id }}</p>
+  <div class="row-input">
     <label for="todo-name">Nome: </label>
-    <input id="todo-name" [(ngModel)]="todo.name" placeholder="name" />
-    <p>{{ todo.category }}</p>
+    <input id="todo-name" [(ngModel)]="todo.name" placeholder="Nome" />
   </div>
-  <button type="button" (click)="save()">Salvar</button>
+
+  <div class="row-input">
+    <label for="todo-name">Categoria: </label>
+    <input id="todo-name" [(ngModel)]="todo.category" placeholder="categoria" />
+  </div>
+  <div class="row-buttons">
+    <button type="button" (click)="goBack()" >Voltar</button>
+    <button type="button" (click)="save()">Salvar</button>
+  </div>
 </div>

@@ -1,4 +1,3 @@
-<h2>TODO LIST</h2>
 <ul class="todos">
   <li *ngFor="let todo of todos">
     <a routerLink="/detail/{{ todo.id }}">
@@ -10,20 +9,27 @@
       title="delete todo"
       (click)="delete(todo)"
     >
-      x
+      Excluir
     </button>
   </li>
 </ul>
 
 <div>
-  <label for="new-todo">Todo name: </label>
-  <input id="new-todo" #todoName />
+  <h2>Criar todo</h2>
+
+  <div class="row-input">
+    <label for="new-todo">Nome:</label> <input id="new-todo" #todoName />
+  </div>
+  <div class="row-input">
+    <label for="new-todo">Categoria</label>
+    <input id="new-todo" #todoCategory />
+  </div>
 
   <button
     type="button"
     class="add-button"
-    (click)="add(todoName.value); todoName.value = ''"
+    (click)="add(todoName.value, todoCategory.value); todoName.value = ''"
   >
-    Add todo
+    Criar
   </button>
 </div>
