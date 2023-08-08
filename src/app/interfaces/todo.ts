@@ -2,7 +2,7 @@ export interface Todo {
   id: number;
   name: string;
   category: string;
-  isChecked: boolean;
+  isCompleted: boolean;
 }
 
 export interface TodosResult {

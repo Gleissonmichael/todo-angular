@@ -1,6 +1,16 @@
-<h2>Todos</h2>
-<div class="todo-menu">
-  <a *ngFor="let todo of todos" routerLink="/detail/{{ todo.id }}">
-    {{ todo.name }}
-  </a>
+<div class="dashboard">
+  <div class="todo-menu">
+    <a
+      *ngFor="let todo of todos"
+      routerLink="/detail/{{ todo.id }}"
+      [ngClass]="{
+        active: todo.isCompleted !== true
+      }"
+    >
+      <p>{{ todo.name }}</p>
+      <h6>
+        {{ todo.category }}
+      </h6>
+    </a>
+  </div>
 </div>
