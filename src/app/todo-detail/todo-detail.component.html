@@ -1,6 +1,6 @@
-<div *ngIf="todo" class="container">
-  <h2>Detalhes {{ todo.name | uppercase }}</h2>
-  <p>id: {{ todo.id }}</p>
+<div *ngIf="todoForm" class="container">
+  <h2>Detalhes {{ todoForm.get("name")?.value | uppercase }}</h2>
+  <p>id: {{ todoForm.get("id")?.value }}</p>
   <form [formGroup]="todoForm">
     <div class="row-input">
       <label for="new-todo">Nome:</label>

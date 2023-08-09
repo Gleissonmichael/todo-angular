@@ -23,6 +23,7 @@ export class TodoDetailComponent {
   public todoForm: FormGroup = this.formBuilder.group({
     name: ['', Validators.required],
     category: ['', Validators.required],
+    id: [''],
   });
 
   ngOnInit(): void {
@@ -31,7 +32,13 @@ export class TodoDetailComponent {
 
   getTodo(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.todoService.getTodo(id).subscribe((todo) => (this.todo = todo.data));
+    this.todoService.getTodo(id).subscribe((todo) =>
+      this.todoForm.setValue({
+        name: todo.data.name,
+        category: todo.data.category,
+        id: todo.data.id,
+      })
+    );
   }
 
   save(): void {
