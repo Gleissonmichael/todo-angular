@@ -77,10 +77,6 @@
   margin: 10px 0 10px 0;
 }
 
-.row-input input {
-  height: 20px;
-}
-
 .add-button {
   padding: 0.6rem;
   background-color: #baf1c3;
@@ -89,8 +85,19 @@
   border-radius: 4px;
 }
 
+input {
+  font-size: 1em;
+  padding: 0.5rem 0;
+  width: 100%;
+}
+
 .alert {
   color: #9c1717;
   font-size: 0.9rem;
   margin-top: 0.2rem;
+}
+
+label {
+  color: #435960;
+  font-weight: bold;
 }

@@ -3,6 +3,7 @@ import { Todo } from '../interfaces/todo';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { TodoService } from '../todo.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-detail',
@@ -13,10 +14,16 @@ export class TodoDetailComponent {
   constructor(
     private route: ActivatedRoute,
     private todoService: TodoService,
-    private location: Location
+    private location: Location,
+    private formBuilder: FormBuilder
   ) {}
 
   @Input() todo?: Todo;
+
+  public todoForm: FormGroup = this.formBuilder.group({
+    name: ['', Validators.required],
+    category: ['', Validators.required],
+  });
 
   ngOnInit(): void {
     this.getTodo();
@@ -28,8 +35,9 @@ export class TodoDetailComponent {
   }
 
   save(): void {
-    if (this.todo) {
-      this.todoService.updateTodo(this.todo)
+    if (this.todoForm.valid) {
+      this.todoService
+        .updateTodo(this.todoForm.value)
         .subscribe(() => this.goBack());
     }
   }

@@ -1,17 +1,36 @@
 <div *ngIf="todo" class="container">
   <h2>Detalhes {{ todo.name | uppercase }}</h2>
   <p>id: {{ todo.id }}</p>
-  <div class="row-input">
-    <label for="todo-name">Nome: </label>
-    <input id="todo-name" [(ngModel)]="todo.name" placeholder="Nome" />
-  </div>
-
-  <div class="row-input">
-    <label for="todo-name">Categoria: </label>
-    <input id="todo-name" [(ngModel)]="todo.category" placeholder="categoria" />
-  </div>
-  <div class="row-buttons">
-    <button type="button" (click)="goBack()" >Voltar</button>
-    <button type="button" (click)="save()">Salvar</button>
-  </div>
+  <form [formGroup]="todoForm">
+    <div class="row-input">
+      <label for="new-todo">Nome:</label>
+      <input id="new-todo" formControlName="name" maxlength="100" />
+      <span
+        class="alert"
+        *ngIf="
+          todoForm.get('name')?.errors &&
+          (todoForm.get('name')?.touched || todoForm.get('name')?.dirty)
+        "
+      >
+        Nome é obrigatório
+      </span>
+    </div>
+    <div class="row-input">
+      <label for="new-todo">Categoria</label>
+      <input id="new-todo" formControlName="category" maxlength="30" />
+      <span
+        class="alert"
+        *ngIf="
+          todoForm.get('category')?.errors &&
+          (todoForm.get('category')?.touched || todoForm.get('category')?.dirty)
+        "
+      >
+        Categoria é obrigatória
+      </span>
+    </div>
+    <div class="row-buttons">
+      <button type="button" (click)="goBack()">Voltar</button>
+      <button type="button" (click)="save()">Salvar</button>
+    </div>
+  </form>
 </div>
