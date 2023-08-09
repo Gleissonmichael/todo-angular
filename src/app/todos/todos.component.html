@@ -1,35 +1,37 @@
-<ul class="todos">
-  <li *ngFor="let todo of todos">
-    <a routerLink="/detail/{{ todo.id }}">
-      <span class="badge">{{ todo.id }}</span> {{ todo.name }}
-    </a>
+<div class="container">
+  <ul class="todos">
+    <li *ngFor="let todo of todos">
+      <a routerLink="/detail/{{ todo.id }}">
+        <span class="badge">{{ todo.id }}</span> {{ todo.name }}
+      </a>
+      <button
+        type="button"
+        class="delete"
+        title="delete todo"
+        (click)="delete(todo)"
+      >
+        Excluir
+      </button>
+    </li>
+  </ul>
+
+  <div>
+    <h2>Criar todo</h2>
+
+    <div class="row-input">
+      <label for="new-todo">Nome:</label> <input id="new-todo" #todoName />
+    </div>
+    <div class="row-input">
+      <label for="new-todo">Categoria</label>
+      <input id="new-todo" #todoCategory />
+    </div>
+
     <button
       type="button"
-      class="delete"
-      title="delete todo"
-      (click)="delete(todo)"
+      class="add-button"
+      (click)="add(todoName.value, todoCategory.value); todoName.value = ''"
     >
-      Excluir
+      Criar
     </button>
-  </li>
-</ul>
-
-<div>
-  <h2>Criar todo</h2>
-
-  <div class="row-input">
-    <label for="new-todo">Nome:</label> <input id="new-todo" #todoName />
   </div>
-  <div class="row-input">
-    <label for="new-todo">Categoria</label>
-    <input id="new-todo" #todoCategory />
-  </div>
-
-  <button
-    type="button"
-    class="add-button"
-    (click)="add(todoName.value, todoCategory.value); todoName.value = ''"
-  >
-    Criar
-  </button>
 </div>

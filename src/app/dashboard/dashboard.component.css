@@ -5,6 +5,7 @@ h2 {
 .dashboard {
   width: 100%;
   display: flex;
+
 }
 
 .todo-menu {
@@ -22,7 +23,7 @@ h2 {
 
 a {
   border-radius: 6px;
-  border: 1px solid #333;
+  box-shadow: 0px -4px 15px 0px rgba(0, 0, 0, 0.15);
   padding: 1rem;
   font-size: 1.2rem;
   text-decoration: none;
@@ -30,10 +31,10 @@ a {
   color: #000000;
   text-align: left;
   width: 90%;
-  min-width: 90vw;
+  min-width: 1000px;
   margin: 0.5rem auto;
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: #f6f6f6;
 
   /* flexbox */
   order: 0;
@@ -52,7 +53,41 @@ a:hover {
   opacity: 0.7;
 }
 
-.active {
+.completed {
   background-color: #baf1c3;
   border: 1px solid #57d64c;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.in-progress {
+  background-color: #033a99;
+  color: #fff;
+  font-weight: 500;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.status-container {
+  display: flex;
+  font-size: 0.7rem;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 1.2rem;
+  color: #2e2c2c;
+  margin-top: 0.2rem;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
+  color: #7e7b7b;
 }
