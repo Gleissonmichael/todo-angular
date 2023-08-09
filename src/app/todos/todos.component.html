@@ -17,21 +17,43 @@
 
   <div>
     <h2>Criar todo</h2>
+    <form [formGroup]="todoForm">
+      <div class="row-input">
+        <label for="new-todo">Nome:</label>
+        <input id="new-todo" formControlName="name" maxlength="100"/>
+        <span
+          class="alert"
+          *ngIf="
+            todoForm.get('name')?.errors &&
+            (todoForm.get('name')?.touched || todoForm.get('name')?.dirty)
+          "
+        >
+          Nome é obrigatório
+        </span>
+      </div>
+      <div class="row-input">
+        <label for="new-todo">Categoria</label>
+        <input id="new-todo" formControlName="category" maxlength="30"/>
+        <span
+          class="alert"
+          *ngIf="
+            todoForm.get('category')?.errors &&
+            (todoForm.get('category')?.touched ||
+              todoForm.get('category')?.dirty)
+          "
+        >
+          Categoria é obrigatória
+        </span>
+      </div>
 
-    <div class="row-input">
-      <label for="new-todo">Nome:</label> <input id="new-todo" #todoName />
-    </div>
-    <div class="row-input">
-      <label for="new-todo">Categoria</label>
-      <input id="new-todo" #todoCategory />
-    </div>
-
-    <button
-      type="button"
-      class="add-button"
-      (click)="add(todoName.value, todoCategory.value); todoName.value = ''"
-    >
-      Criar
-    </button>
+      <button
+        type="button"
+        class="add-button"
+        [disabled]="todoForm.invalid"
+        (click)="add()"
+      >
+        Criar
+      </button>
+    </form>
   </div>
 </div>

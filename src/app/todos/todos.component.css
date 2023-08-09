@@ -88,3 +88,9 @@
   cursor: pointer;
   border-radius: 4px;
 }
+
+.alert {
+  color: #9c1717;
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
