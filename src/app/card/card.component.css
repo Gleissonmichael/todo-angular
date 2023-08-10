@@ -1,0 +1,91 @@
+h2 {
+  text-align: center;
+}
+
+.todo-menu {
+  padding: 0;
+  margin: auto;
+
+  /* flexbox */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+}
+
+.card {
+  border-radius: 6px;
+  box-shadow: 0px -4px 15px 0px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  font-size: 1.2rem;
+  text-decoration: none;
+  display: inline-block;
+  color: #000000;
+  text-align: left;
+  min-width: 100%;
+  margin: 0.5rem auto;
+  box-sizing: border-box;
+  background-color: #f6f6f6;
+
+  /* flexbox */
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+}
+
+@media (min-width: 600px) {
+  a {
+    width: 18%;
+    box-sizing: content-box;
+  }
+}
+
+.completed {
+  background-color: #baf1c3;
+  border: 1px solid #57d64c;
+  border-radius: 4px;
+}
+
+.in-progress {
+  background-color: #033a99;
+  color: #fff;
+  font-weight: 500;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.status-container {
+  display: flex;
+  font-size: 0.7rem;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.2rem;
+  color: #2e2c2c;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: #7e7b7b;
+}
+
+.icon-blue {
+  color: rgb(0, 0, 146);
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.icon-red {
+  color: rgb(152, 8, 8);
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.icon-green {
+  color: rgb(0, 141, 0);
+  font-size: 0.9em;
+  cursor: pointer;
+}

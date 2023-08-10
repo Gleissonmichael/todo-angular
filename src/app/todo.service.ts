@@ -15,7 +15,8 @@ export class TodoService {
     private messageService: MessageService
   ) {}
 
-  private todoUrl = 'https://todo-api-snowy.vercel.app/todo';
+  // private todoUrl = 'https://todo-api-snowy.vercel.app/todo';
+  private todoUrl = 'http://localhost:3000/todo';
 
   private log(message: string) {
     this.messageService.add(`TodoService: ${message}`);
@@ -67,6 +68,15 @@ export class TodoService {
     return this.http.delete<TodoResult>(url, this.httpOptions).pipe(
       tap((_) => this.log(`deleted todo id=${id}`)),
       catchError(this.handleError<TodoResult>('deleteTodo'))
+    );
+  }
+
+  toggleTodo(id: number): Observable<TodosResult> {
+    const url = `${this.todoUrl}/${id}`;
+
+    return this.http.patch<TodosResult>(url, this.httpOptions).pipe(
+      tap((_) => this.log(`complete todo id=${id}`)),
+      catchError(this.handleError<TodosResult>('completeTodo'))
     );
   }
 

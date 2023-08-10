@@ -1,24 +1,5 @@
-<div class="dashboard">
-  <div class="todo-menu">
-    <a *ngFor="let todo of todos" routerLink="/detail/{{ todo.id }}">
-      <div class="row">
-        <div>
-          <div class="status-container">
-            <p
-              [ngClass]="{
-                completed: todo.isCompleted === true,
-                'in-progress': todo.isCompleted !== true
-              }"
-            >
-              {{ todo.isCompleted !== true ? "Em andamento" : "Completo" }}
-            </p>
-            <p class="subtitle">#{{ todo.category }}</p>
-          </div>
-          <p class="title">{{ todo.name }}</p>
-        </div>
-
-        <i class="fas fa-arrow-right"></i>
-      </div>
-    </a>
-  </div>
+<div class="container">
+  <h3>Tarefas Cadastradas</h3>
+  <app-card [todos]="todos"></app-card>
+  <button class="btn btn-primary mt-3" type="button" routerLink="/todos">Cadastrar nova tarefa</button> 
 </div>

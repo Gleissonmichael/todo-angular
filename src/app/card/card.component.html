@@ -1,0 +1,30 @@
+<div class="card" *ngFor="let todo of todos">
+  <div class="row align-items-center pe-2">
+    <div class="col-md-11">
+      <div class="status-container">
+        <p
+          [ngClass]="{
+            completed: todo.isCompleted === true,
+            'in-progress': todo.isCompleted !== true
+          }"
+        >
+          {{ todo.isCompleted !== true ? "Em andamento" : "Completo" }}
+        </p>
+        <p class="subtitle ms-1">#{{ todo.category }}</p>
+      </div>
+      <p class="title">{{ todo.name }}</p>
+    </div>
+    <div class="col-md-1 d-flex justify-content-end">
+      <i
+        class="fa-solid fa-pen-to-square icon-blue pe-3"
+        routerLink="/detail/{{ todo.id }}"
+      ></i>
+      <i class="fa-solid fa-trash icon-red pe-3" (click)="delete(todo)"></i>
+      <i
+        *ngIf="!todo.isCompleted"
+        class="fa-solid fa-circle-check icon-green"
+        (click)="complete(todo)"
+      ></i>
+    </div>
+  </div>
+</div>

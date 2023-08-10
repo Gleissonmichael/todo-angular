@@ -8,23 +8,8 @@ input {
   padding: 0.5rem 0;
   width: 100%;
 }
-
 button {
-  margin-top: 20px;
-  background-color: #eeeeee;
-  padding: 1rem;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-button:hover {
-  background-color: #cfd8dc;
-}
-
-button:disabled {
-  background-color: #eee;
-  color: #ccc;
-  cursor: auto;
+  background-color: #fff;
 }
 
 .row-input {

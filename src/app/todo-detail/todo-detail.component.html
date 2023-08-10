@@ -3,8 +3,13 @@
   <p>id: {{ todoForm.get("id")?.value }}</p>
   <form [formGroup]="todoForm">
     <div class="row-input">
-      <label for="new-todo">Nome:</label>
-      <input id="new-todo" formControlName="name" maxlength="100" />
+      <label for="new-todo" class="form-label">Nome:</label>
+      <input
+        id="new-todo"
+        class="form-control"
+        formControlName="name"
+        maxlength="100"
+      />
       <span
         class="alert"
         *ngIf="
@@ -16,8 +21,13 @@
       </span>
     </div>
     <div class="row-input">
-      <label for="new-todo">Categoria</label>
-      <input id="new-todo" formControlName="category" maxlength="30" />
+      <label for="new-todo" class="form-label">Categoria</label>
+      <input
+        id="new-todo"
+        class="form-control"
+        formControlName="category"
+        maxlength="30"
+      />
       <span
         class="alert"
         *ngIf="
@@ -28,9 +38,13 @@
         Categoria é obrigatória
       </span>
     </div>
-    <div class="row-buttons">
-      <button type="button" (click)="goBack()">Voltar</button>
-      <button type="button" (click)="save()">Salvar</button>
+    <div class="row-buttons mt-3">
+      <button type="button" class="btn btn-outline-primary" (click)="goBack()">
+        Voltar
+      </button>
+      <button type="button" class="btn btn-outline-success" (click)="save()">
+        Salvar
+      </button>
     </div>
   </form>
 </div>
