@@ -1,5 +1,22 @@
 <div class="container">
-  <h3>Tarefas Cadastradas</h3>
+  <div class="d-flex justify-content-between">
+    <h3>Tarefas</h3>
+    <form class="d-flex" role="search">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Pesquisar"
+        aria-label="Search"
+      />
+      <button class="btn btn-secondary" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+  </div>
   <app-card [todos]="todos"></app-card>
-  <button class="btn btn-primary mt-3" type="button" routerLink="/todos">Cadastrar nova tarefa</button> 
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary" type="button" routerLink="/todos">
+      Cadastrar Tarefa
+    </button>
+  </div>
 </div>

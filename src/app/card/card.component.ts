@@ -21,17 +21,8 @@ export class CardComponent {
 
   complete(todo: Todo): void {
     this.todos = this.todos.filter((t) => t !== todo);
-    this.todoService.toggleTodo(todo.id).subscribe(
-      (todos) =>
-        (this.todos = todos.data.sort((a, b) => {
-          if (a.isCompleted && !b.isCompleted) {
-            return 1;
-          }
-          if (!a.isCompleted && b.isCompleted) {
-            return -1;
-          }
-          return 0;
-        }))
-    );
+    this.todoService
+      .toggleTodo(todo.id)
+      .subscribe((todos) => (this.todos = todos.data));
   }
 }

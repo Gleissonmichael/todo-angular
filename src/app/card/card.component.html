@@ -1,30 +1,33 @@
-<div class="card" *ngFor="let todo of todos">
-  <div class="row align-items-center pe-2">
-    <div class="col-md-11">
-      <div class="status-container">
-        <p
-          [ngClass]="{
-            completed: todo.isCompleted === true,
-            'in-progress': todo.isCompleted !== true
-          }"
-        >
-          {{ todo.isCompleted !== true ? "Em andamento" : "Completo" }}
-        </p>
-        <p class="subtitle ms-1">#{{ todo.category }}</p>
+<ul class="list-group list-group-flush mb-3 mt-3">
+  <li class="list-group-item"></li>
+  <li class="list-group-item" *ngFor="let todo of todos">
+    <div class="row align-items-center pe-2">
+      <div class="col-md-11 ps-3">
+        <div class="col d-flex">
+          <input class="form-check-input" type="checkbox" [checked]="todo.isCompleted"/>
+          <div class="ms-3">
+            <!-- <p
+              [ngClass]="{
+                completed: todo.isCompleted,
+                'in-progress': !todo.isCompleted
+              }"
+              class="m-0"
+            >
+              {{ todo.isCompleted ? "Completo" : "Em andamento" }}
+            </p> -->
+            <p class="title fw-bold">{{ todo.name }}</p>
+            <p class="subtitle">#{{ todo.category }}</p>
+          </div>
+        </div>
       </div>
-      <p class="title">{{ todo.name }}</p>
+      <div class="col-md-1 d-flex justify-content-end">
+        <i
+          class="fas fa-pen-to-square icon pe-3"
+          [routerLink]="'/detail/' + todo.id"
+        ></i>
+        <i class="fas fa-trash icon" (click)="delete(todo)"></i>
+      </div>
     </div>
-    <div class="col-md-1 d-flex justify-content-end">
-      <i
-        class="fa-solid fa-pen-to-square icon-blue pe-3"
-        routerLink="/detail/{{ todo.id }}"
-      ></i>
-      <i class="fa-solid fa-trash icon-red pe-3" (click)="delete(todo)"></i>
-      <i
-        *ngIf="!todo.isCompleted"
-        class="fa-solid fa-circle-check icon-green"
-        (click)="complete(todo)"
-      ></i>
-    </div>
-  </div>
-</div>
+  </li>
+  <li class="list-group-item"></li>
+</ul>
