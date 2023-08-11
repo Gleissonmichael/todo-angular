@@ -4,17 +4,13 @@
     <div class="row align-items-center pe-2">
       <div class="col-md-11 ps-3">
         <div class="col d-flex">
-          <input class="form-check-input" type="checkbox" [checked]="todo.isCompleted"/>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [checked]="todo.isCompleted"
+            (click)="complete(todo)"
+          />
           <div class="ms-3">
-            <!-- <p
-              [ngClass]="{
-                completed: todo.isCompleted,
-                'in-progress': !todo.isCompleted
-              }"
-              class="m-0"
-            >
-              {{ todo.isCompleted ? "Completo" : "Em andamento" }}
-            </p> -->
             <p class="title fw-bold">{{ todo.name }}</p>
             <p class="subtitle">#{{ todo.category }}</p>
           </div>

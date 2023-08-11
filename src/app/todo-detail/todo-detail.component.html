@@ -1,8 +1,8 @@
 <div *ngIf="todoForm" class="container">
   <h2>Detalhes {{ todoForm.get("name")?.value | uppercase }}</h2>
-  <p>id: {{ todoForm.get("id")?.value }}</p>
+  <p>#{{ todoForm.get("category")?.value }}</p>
   <form [formGroup]="todoForm">
-    <div class="row-input">
+    <div class="mt-3">
       <label for="new-todo" class="form-label">Nome:</label>
       <input
         id="new-todo"
@@ -20,7 +20,7 @@
         Nome é obrigatório
       </span>
     </div>
-    <div class="row-input">
+    <div class="mt-3">
       <label for="new-todo" class="form-label">Categoria</label>
       <input
         id="new-todo"
